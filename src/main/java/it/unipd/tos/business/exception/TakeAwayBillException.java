@@ -1,0 +1,16 @@
+////////////////////////////////////////////////////////////////////
+// Marco Tesser 1201154
+////////////////////////////////////////////////////////////////////
+
+package it.unipd.tos.business.exception;
+
+public class TakeAwayBillException extends Throwable{
+
+    String msg;
+    
+  public TakeAwayBillException(){
+      
+      
+  }
+  
+}
