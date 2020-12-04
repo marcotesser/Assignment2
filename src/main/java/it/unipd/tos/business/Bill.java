@@ -11,6 +11,7 @@ import java.time.LocalTime;
 
 import it.unipd.tos.business.exception.TakeAwayBillException;
 import it.unipd.tos.model.MenuItem;
+import it.unipd.tos.model.MenuItem.items;
 import it.unipd.tos.model.User;
 
 public class Bill implements TakeAwayBill {
@@ -24,10 +25,21 @@ public class Bill implements TakeAwayBill {
     public double getOrderPrice(List<MenuItem> itemsOrdered, User user) throws TakeAwayBillException {
         
         double tot = 0;
+        int icecreamcounter = 0;
+        double minicecreamprice = Double.MAX_VALUE;
         
         for(MenuItem mi : itemsOrdered) {
             
+            if(mi.getType() == items.Gelato) {
+                icecreamcounter ++;
+                if(mi.getPrice() < minicecreamprice) {
+                    minicecreamprice = mi.getPrice();
+                }
+            }
             tot += mi.getPrice();
+        }
+        if (icecreamcounter >= 5){
+            tot -= minicecreamprice/2; 
         }
         
         return tot;
