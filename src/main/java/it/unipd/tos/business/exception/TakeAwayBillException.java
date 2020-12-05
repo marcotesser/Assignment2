@@ -6,11 +6,14 @@ package it.unipd.tos.business.exception;
 
 public class TakeAwayBillException extends Throwable{
 
-    String msg;
+    private String errormsg;
     
-  public TakeAwayBillException(){
-      
-      
-  }
+    public TakeAwayBillException(String errormsg){
+        this.errormsg = errormsg;
+    }
+
+    public String getMessage(){
+        return errormsg;
+    }
   
 }

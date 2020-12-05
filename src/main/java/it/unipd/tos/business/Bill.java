@@ -29,6 +29,10 @@ public class Bill implements TakeAwayBill {
         double minicecreamprice = Double.MAX_VALUE;
         double icecreamandpuddingpricecount = 0;
         
+        if(itemsOrdered.size() >= 30) {
+            throw new TakeAwayBillException("Numero massimo ordini superato"); 	
+        }
+        
         for(MenuItem mi : itemsOrdered) {
             
             if(mi.getType() == items.Gelato) {
@@ -46,7 +50,7 @@ public class Bill implements TakeAwayBill {
             tot -= minicecreamprice/2;
         }
         if (icecreamandpuddingpricecount >= 50){
-            tot = tot*0.9;
+            tot *= 0.9;
         }
         return tot;
     }
