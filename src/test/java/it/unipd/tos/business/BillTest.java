@@ -69,5 +69,18 @@ public class BillTest {
         }
         bi.getOrderPrice(li, us);
     }
+    
+    @Test
+    public void Less10AddCommissionTest() {
+    	li.add(new MenuItem("Banana Split",MenuItem.items.Gelato,2.50));
+    	try {
+            assertEquals(3.00,bi.getOrderPrice(li,us),0.0);
+        } catch (TakeAwayBillException e) {
+        System.out.println("Errore");
+        }
+    }
+    
+    
+    
 }
 

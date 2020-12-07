@@ -52,6 +52,9 @@ public class Bill implements TakeAwayBill {
         if (icecreamandpuddingpricecount >= 50){
             tot *= 0.9;
         }
+        if (tot < 10) {
+            tot += 0.5;
+        }
         return tot;
     }
 
