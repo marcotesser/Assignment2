@@ -4,7 +4,6 @@
 
 package it.unipd.tos.business;
 
-import it.unipd.tos.business.Bill;
 import it.unipd.tos.model.User;
 import it.unipd.tos.model.MenuItem;
 import it.unipd.tos.business.exception.TakeAwayBillException;
@@ -31,7 +30,6 @@ public class BillTest {
 
     @Test
     public void ComputeTotalTest() {
-        
     	li.add(new MenuItem("Banana Split",MenuItem.items.Gelato,13.00));
     	li.add(new MenuItem("Pinguino",MenuItem.items.Budino,12.00));
         try {
@@ -54,7 +52,7 @@ public class BillTest {
     }
 
     @Test 
-    public void test() {
+    public void Plus50Discount10Test() {
         li.add(new MenuItem("Banana Split",MenuItem.items.Gelato,40.00));
         li.add(new MenuItem("Pinguino",MenuItem.items.Budino,20.00));
     	try {
@@ -64,5 +62,12 @@ public class BillTest {
         }
     }
     
+    @Test (expected = TakeAwayBillException.class)
+    public void Max30OrdersTest() throws TakeAwayBillException{
+        for(int i = 0; i < 30; i++) {
+            li.add(new MenuItem("Banana Split",MenuItem.items.Gelato,40.00));
+        }
+        bi.getOrderPrice(li, us);
+    }
 }
 

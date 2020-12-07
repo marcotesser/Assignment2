@@ -1,6 +1,5 @@
 package it.unipd.tos.business.exception;
 
-import it.unipd.tos.business.exception.TakeAwayBillException;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.Before;

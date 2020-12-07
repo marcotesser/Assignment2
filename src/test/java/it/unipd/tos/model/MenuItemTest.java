@@ -5,8 +5,6 @@
 
 package it.unipd.tos.model;
 
-import it.unipd.tos.model.MenuItem;
-
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.Before;

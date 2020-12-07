@@ -30,7 +30,7 @@ public class Bill implements TakeAwayBill {
         double icecreamandpuddingpricecount = 0;
         
         if(itemsOrdered.size() >= 30) {
-            throw new TakeAwayBillException("Numero massimo ordini superato"); 	
+            throw new TakeAwayBillException("Numero massimo ordini superato");
         }
         
         for(MenuItem mi : itemsOrdered) {
