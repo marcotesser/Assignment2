@@ -13,13 +13,30 @@ import it.unipd.tos.business.exception.TakeAwayBillException;
 import it.unipd.tos.model.MenuItem;
 import it.unipd.tos.model.MenuItem.items;
 import it.unipd.tos.model.User;
-
+import java.util.Random;
 public class Bill implements TakeAwayBill {
 
     private LocalTime t;
+    private double totale;
+    private User us;
+    private static CashRegister cr = new CashRegister();
 
-    public Bill(LocalTime t){
+    public Bill(LocalTime t,List<MenuItem> itemsOrdered, User user){
         this.t = t;
+        /*try {
+        this.totale = this.getOrderPrice(itemsOrdered, user);
+        }catch(TakeAwayBillException tabe){
+        	System.out.println("Errore");
+        }*/
+        this.us = user; 
+    }
+    
+    public LocalTime getLocalTime() {
+    	return t;
+    }    
+    
+    public User getUser() {
+    	return us;
     }
 
     public double getOrderPrice(List<MenuItem> itemsOrdered, User user) throws TakeAwayBillException {
@@ -32,6 +49,10 @@ public class Bill implements TakeAwayBill {
         if(itemsOrdered.size() >= 30) {
             throw new TakeAwayBillException("Numero massimo ordini superato");
         }
+        
+        cr.AddBill(this);
+        if(cr.gift()) return 0;
+        
         
         for(MenuItem mi : itemsOrdered) {
             
@@ -56,6 +77,7 @@ public class Bill implements TakeAwayBill {
             tot += 0.5;
         }
         return tot;
+         
     }
 
 }
