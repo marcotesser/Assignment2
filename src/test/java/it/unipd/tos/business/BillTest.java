@@ -16,17 +16,29 @@ import org.junit.Test;
 import org.junit.Before;
 
 public class BillTest {
-
+	
     Bill bi; 
     List<MenuItem> li;
     User us;
 
     @Before
     public void setup (){
-        bi = new Bill(LocalTime.of(12,0,0,0));
         li = new ArrayList<MenuItem>();
         us = new User(1,"Marco","Tesser",21);
+    	bi = new Bill(LocalTime.of(12,0,0,0),us);
+
     }
+    
+    @Test
+    public void getUserTest() {
+        assertEquals(us,bi.getUser());
+    }
+    
+    @Test
+    public void getLocalTimeTest() {
+        assertEquals(LocalTime.of(12,0,0,0),bi.getLocalTime());
+    }
+    
 
     @Test
     public void ComputeTotalTest() {

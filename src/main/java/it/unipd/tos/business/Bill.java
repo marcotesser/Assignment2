@@ -17,17 +17,11 @@ import java.util.Random;
 public class Bill implements TakeAwayBill {
 
     private LocalTime t;
-    private double totale;
     private User us;
     private static CashRegister cr = new CashRegister();
 
-    public Bill(LocalTime t,List<MenuItem> itemsOrdered, User user){
+    public Bill(LocalTime t, User user){
         this.t = t;
-        /*try {
-        this.totale = this.getOrderPrice(itemsOrdered, user);
-        }catch(TakeAwayBillException tabe){
-        	System.out.println("Errore");
-        }*/
         this.us = user; 
     }
     
