@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalTime;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.Before;
 
@@ -39,6 +41,10 @@ public class BillTest {
         assertEquals(LocalTime.of(12,0,0,0),bi.getLocalTime());
     }
     
+    @Test
+    public void getGiftedTest() {
+        assertFalse(bi.getGifted());
+    }
 
     @Test
     public void ComputeTotalTest() {
@@ -91,8 +97,16 @@ public class BillTest {
         System.out.println("Errore");
         }
     }
-    
-    
-    
+    @Test
+    public void GiftTest() {
+        boolean a = false;
+        for (int i = 0;i<1000;i++) {
+            Bill b = new Bill(LocalTime.of(18,30),new User(i,"Marco","Tesser",14));
+            if(b.getGifted()) {
+            	a = true;
+            }
+        }
+        assertTrue(a);
+    }
 }
 

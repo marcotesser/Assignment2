@@ -1,8 +1,11 @@
+////////////////////////////////////////////////////////////////////
+// Marco Tesser 1201154
+////////////////////////////////////////////////////////////////////
+
+
 package it.unipd.tos.business;
 
-import it.unipd.tos.model.MenuItem;
 import it.unipd.tos.model.User;
-import it.unipd.tos.business.exception.TakeAwayBillException;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -12,7 +15,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.After;
 
 
 
@@ -61,56 +63,24 @@ public class CashRegisterTest {
     
 	@Test
 	public void gifttest1(){
-		ul = new ArrayList<User>();
-		bl = new ArrayList<Bill>();
-		for (int i = 0;i<25;i++) {
-	    ul.add(new User(i,"Marco","Tesser",i%2==0 ? 10 : 20));
-		}
-		for (int i = 0;i<25;i++){
-	    bl.add(new Bill(i%2==0 ? LocalTime.of(18, 30) : LocalTime.of(19, 30),ul.get(i)));
-		}
-	    cr = new CashRegister(bl,ul);
 		cr.AddBill(new Bill(LocalTime.of(18,40),new User(91,"Marco","Tesser",21)));
 		assertFalse(cr.gift());
 	}
 	
 	@Test
 	public void gifttest2(){
-		ul = new ArrayList<User>();
-		bl = new ArrayList<Bill>();
-		for (int i = 0;i<25;i++) {
-	    ul.add(new User(i,"Marco","Tesser",i%2==0 ? 10 : 20));
-		}
-		for (int i = 0;i<25;i++){
-	    bl.add(new Bill(i%2==0 ? LocalTime.of(18, 30) : LocalTime.of(19, 30),ul.get(i)));
-		}
-	    cr = new CashRegister(bl,ul);
 		cr.AddBill(new Bill(LocalTime.of(19,40),new User(91,"Marco","Tesser",15)));
 		assertFalse(cr.gift());
 	}
 	
 	@Test
 	public void gifttest3(){
-		ul = new ArrayList<User>();
-		bl = new ArrayList<Bill>();
-		for (int i = 0;i<25;i++) {
-	    ul.add(new User(i,"Marco","Tesser",i%2==0 ? 10 : 20));
-		}
-		for (int i = 0;i<25;i++){
-	    bl.add(new Bill(i%2==0 ? LocalTime.of(18, 30) : LocalTime.of(19, 30),ul.get(i)));
-		}
-	    cr = new CashRegister(bl,ul);
 		cr.AddBill(new Bill(LocalTime.of(19,40),new User(91,"Marco","Tesser",21)));
 		assertFalse(cr.gift());
 	}
 	
     @Test
     public void gifttest4(){
-    	ul = new ArrayList<User>();
-		bl = new ArrayList<Bill>();
-	    ul.add(new User(20,"Marco","Tesser",10));
-	    bl.add(new Bill(LocalTime.of(18, 30),ul.get(0)));
-	    cr = new CashRegister(bl,ul);
         cr.AddBill(new Bill(LocalTime.of(18,40),new User(20,"Marco","Tesser",10)));
         assertFalse(cr.gift());
 	}
@@ -118,7 +88,6 @@ public class CashRegisterTest {
     @Test
     public void gifttest5(){
     	boolean a = false,c = true;
-    	cr = new CashRegister();
         for(int i = 0;i < 1000;i++) {
         	cr.AddBill(new Bill(LocalTime.of(18,40),new User(i+25,"Marco","Tesser",10)));
         	boolean b = cr.gift();
