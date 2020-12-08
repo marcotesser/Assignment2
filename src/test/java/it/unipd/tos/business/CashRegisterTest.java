@@ -62,31 +62,31 @@ public class CashRegisterTest {
 	}
     
 	@Test
-	public void gifttest1(){
+	public void gifttestrighttimewrongage(){
 		cr.AddBill(new Bill(LocalTime.of(18,40),new User(91,"Marco","Tesser",21)));
 		assertFalse(cr.gift());
 	}
 	
 	@Test
-	public void gifttest2(){
+	public void gifttestwrongtimerightage(){
 		cr.AddBill(new Bill(LocalTime.of(19,40),new User(91,"Marco","Tesser",15)));
 		assertFalse(cr.gift());
 	}
 	
 	@Test
-	public void gifttest3(){
+	public void gifttestwrongtimewrongage(){
 		cr.AddBill(new Bill(LocalTime.of(19,40),new User(91,"Marco","Tesser",21)));
 		assertFalse(cr.gift());
 	}
 	
     @Test
-    public void gifttest4(){
+    public void gifttestalreadycomeuser(){
         cr.AddBill(new Bill(LocalTime.of(18,40),new User(20,"Marco","Tesser",10)));
         assertFalse(cr.gift());
 	}
 
     @Test
-    public void gifttest5(){
+    public void gifttesthavingbothgiftedandnongiftedicecreams(){
     	boolean a = false,c = true;
         for(int i = 0;i < 1000;i++) {
         	cr.AddBill(new Bill(LocalTime.of(18,40),new User(i+25,"Marco","Tesser",10)));
